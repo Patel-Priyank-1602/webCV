@@ -74,9 +74,9 @@ document.addEventListener('DOMContentLoaded', () => {
         }, speed);
     };
 
-    typeWriter(heroTitle, 'Patel Priyank', 100);
+    typeWriter(heroTitle, "I'm Priyank Patel", 100);
     setTimeout(() => {
-        typeWriter(heroSubtitle, 'Learner And Student at PDEU', 50);
+        typeWriter(heroSubtitle, 'Transforming ideas into innovative technology', 70);
     }, 2000);
 });
 
