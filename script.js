@@ -76,7 +76,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     typeWriter(heroTitle, "I'm Priyank Patel", 100);
     setTimeout(() => {
-        typeWriter(heroSubtitle, 'Transforming ideas into innovative technology', 70);
+        typeWriter(heroSubtitle, 'Transforming ideas into innovative technology', 80);
     }, 2000);
 });
 
+ 
