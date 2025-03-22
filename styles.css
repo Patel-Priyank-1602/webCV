@@ -344,12 +344,108 @@ nav {
     transition: 0.3s ease;
 }
 
-/* Footer */
+/* Footer Styles */
 footer {
-    background-color: var(--secondary-color);
-    color: #fff;
-    text-align: center;
-    padding: 1rem 0;
+  background-color: #1a1a2e;
+  color: #f0f0f0;
+  padding: 60px 0 20px;
+}
+
+.footer-content {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.footer-logo img {
+  max-width: 150px;
+  height: auto;
+}
+
+.footer-links h4,
+.footer-newsletter h4 {
+  color: #4da8da;
+  margin-bottom: 20px;
+  font-weight: 600;
+  position: relative;
+}
+
+.footer-links ul {
+  list-style: none;
+}
+
+.footer-links ul li {
+  margin-bottom: 12px;
+}
+
+.footer-links ul li a {
+  color: #c5c5c5;
+  text-decoration: none;
+  transition: var(--transition-default);
+}
+
+.footer-links ul li a:hover {
+  color: #4da8da;
+  transform: translateX(5px);
+}
+
+.newsletter-form {
+  position: relative;
+  display: flex;
+}
+
+.newsletter-form input {
+  width: 100%;
+  padding: 12px 50px 12px 15px;
+  border-radius: 30px;
+  border: none;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #f0f0f0;
+}
+
+.newsletter-form button {
+  position: absolute;
+  right: 5px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(90deg, #4da8da, #2c7da0);
+  border: none;
+  border-radius: 50%;
+  width: 34px;
+  height: 34px;
+  cursor: pointer;
+  transition: var(--transition-default);
+}
+
+.footer-bottom {
+  max-width: 1200px;
+  margin: 40px auto 0;
+  padding: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  display: flex;
+  justify-content: space-between;
+  color: #919191;
+}
+
+/* Back to Top */
+.back-to-top a {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: linear-gradient(135deg, #4da8da, #2c7da0);
+  color: white;
+  border-radius: 50%;
+  text-decoration: none;
+  box-shadow: var(--shadow-medium);
+  transition: var(--transition-default);
 }
 /* Animations */
 @keyframes navLinkFade {
@@ -470,6 +566,9 @@ footer {
       opacity: 1;
       visibility: visible;
     }
+    .footer-content {
+      grid-template-columns: 1fr;
+  }
   }
   
   @media screen and (max-width: 480px) {
