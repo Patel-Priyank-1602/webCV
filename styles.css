@@ -226,8 +226,8 @@ nav {
 }
 
 .skill-item img, .skill-item i {
-    width: 50px;
-    height: 50px;
+    width: 80px;
+    height: 80px;
     margin-bottom: 10px;
     color: #333;
 }
@@ -249,8 +249,8 @@ nav {
     }
     
     .skill-item img, .skill-item i {
-        width: 40px;
-        height: 40px;
+        width: 50px;
+        height: 50px;
     }
 }
 
