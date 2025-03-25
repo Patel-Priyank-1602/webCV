@@ -226,16 +226,70 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2 class="section-title">Contact Me</h2>
-                <div class="contact-info">
-                    <p><i class="fas fa-phone"></i> +91 9512771016</p>
-                    <p><i class="fas fa-envelope"></i> patelpriyank2526@gmail.com</p>
-                </div>
-                <div class="social-links">
-                    <a href="https://www.linkedin.com/in/patel-priyank-945131288/" target="_blank"><i
-                            class="fab fa-linkedin"></i></a>
-                    <a href="https://github.com/Patel-Priyank-1602" target="_blank"><i class="fab fa-github"></i></a>
-                    <a href="https://www.instagram.com/patelpriyank.d/" target="_blank"><i
-                            class="fab fa-instagram"></i></a>
+                
+                <div class="contact-container">
+                    <!-- Contact Form -->
+                    <div class="contact-form-container">
+                        <h3 class="contact-subtitle">Send Me a Message</h3>
+                        <form id="contactForm" class="contact-form">
+                            <div class="form-group">
+                                <label for="name">Your Name</label>
+                                <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                                <span class="error-message" id="nameError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="email">Your Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                                <span class="error-message" id="emailError"></span>
+                            </div>
+                            
+                            <div class="form-group">
+                                <label for="message">Your Message</label>
+                                <textarea id="message" class="form-control" rows="5" placeholder="How can I help you?"></textarea>
+                                <span class="error-message" id="messageError"></span>
+                            </div>
+                            <button type="submit" id="submitButton" class="submit-button">Send Message</button>
+                            
+                            <div id="successMessage" class="alert-message success-message hidden">
+                                <i class="fas fa-check-circle"></i>
+                                <span>Your message has been sent successfully!</span>
+                            </div>
+                            
+                            <div id="errorMessage" class="alert-message error-message hidden">
+                                <i class="fas fa-exclamation-circle"></i>
+                                <span>There was an error sending your message. Please try again.</span>
+                            </div>
+                        </form>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="contact-info-container">
+                        <h3 class="contact-subtitle">Contact Information</h3>
+                        <div class="contact-info">
+                            <div class="contact-info-item">
+                                <i class="fas fa-phone"></i>
+                                <p>+91 9512771016</p>
+                            </div>
+                            <div class="contact-info-item">
+                                <i class="fas fa-envelope"></i>
+                                <p>patelpriyank2526@gmail.com</p>
+                            </div>
+                        </div>
+                        
+                        <h3 class="contact-subtitle">Connect With Me</h3>
+                        <div class="social-links">
+                            <a href="https://www.linkedin.com/in/patel-priyank-945131288/" target="_blank">
+                                <i class="fab fa-linkedin"></i>
+                            </a>
+                            <a href="https://github.com/Patel-Priyank-1602" target="_blank">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="https://www.instagram.com/patelpriyank.d/" target="_blank">
+                                <i class="fab fa-instagram"></i>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>

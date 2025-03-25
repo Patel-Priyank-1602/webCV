@@ -229,5 +229,97 @@ document.addEventListener("DOMContentLoaded", () => {
       typeWriter(heroSubtitle, "Transforming ideas into innovative technology", 80)
     }, 2000)
   })
-  
-  
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get form elements
+    const contactForm = document.getElementById('contactForm');
+    const nameInput = document.getElementById('name');
+    const emailInput = document.getElementById('email');
+    const messageInput = document.getElementById('message');
+    const submitButton = document.getElementById('submitButton');
+    const successMessage = document.getElementById('successMessage');
+    const errorMessage = document.getElementById('errorMessage');
+    const nameError = document.getElementById('nameError');
+    const emailError = document.getElementById('emailError');
+    const messageError = document.getElementById('messageError');
+    
+    // Form validation and submission
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Reset previous errors
+        resetErrors();
+        
+        // Validate form
+        let isValid = true;
+        
+        if (!nameInput.value.trim()) {
+            showError(nameInput, nameError, 'Name is required');
+            isValid = false;
+        }
+        
+        if (!emailInput.value.trim()) {
+            showError(emailInput, emailError, 'Email is required');
+            isValid = false;
+        } else if (!isValidEmail(emailInput.value)) {
+            showError(emailInput, emailError, 'Please enter a valid email address');
+            isValid = false;
+        }
+        
+        if (!messageInput.value.trim()) {
+            showError(messageInput, messageError, 'Message is required');
+            isValid = false;
+        }
+        
+        if (isValid) {
+            // Show loading state
+            submitButton.disabled = true;
+            submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
+            
+            // Simulate form submission (replace with actual form submission)
+            setTimeout(function() {
+                // Hide loading state
+                submitButton.disabled = false;
+                submitButton.textContent = 'Send Message';
+                
+                // Show success message
+                successMessage.classList.remove('hidden');
+                
+                // Reset form
+                contactForm.reset();
+                fileName.textContent = 'No file chosen';
+                
+                // Hide success message after 5 seconds
+                setTimeout(function() {
+                    successMessage.classList.add('hidden');
+                }, 5000);
+            }, 1500);
+        }
+    });
+    
+    function showError(input, errorElement, message) {
+        input.classList.add('error');
+        errorElement.textContent = message;
+        errorElement.style.display = 'block';
+    }
+    
+    function resetErrors() {
+        // Reset input styles
+        nameInput.classList.remove('error');
+        emailInput.classList.remove('error');
+        messageInput.classList.remove('error');
+        
+        // Hide error messages
+        nameError.style.display = 'none';
+        emailError.style.display = 'none';
+        messageError.style.display = 'none';
+        
+        // Hide alert messages
+        successMessage.classList.add('hidden');
+        errorMessage.classList.add('hidden');
+    }
+    
+    function isValidEmail(email) {
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return emailRegex.test(email);
+    }
+});
