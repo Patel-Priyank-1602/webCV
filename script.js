@@ -241,22 +241,22 @@ document.addEventListener("DOMContentLoaded", () => {
     const nameError = document.getElementById('nameError');
     const emailError = document.getElementById('emailError');
     const messageError = document.getElementById('messageError');
-    
+
     // Form validation and submission
     contactForm.addEventListener('submit', function(e) {
         e.preventDefault();
-        
+
         // Reset previous errors
         resetErrors();
-        
+
         // Validate form
         let isValid = true;
-        
+
         if (!nameInput.value.trim()) {
             showError(nameInput, nameError, 'Name is required');
             isValid = false;
         }
-        
+
         if (!emailInput.value.trim()) {
             showError(emailInput, emailError, 'Email is required');
             isValid = false;
@@ -264,60 +264,86 @@ document.addEventListener("DOMContentLoaded", () => {
             showError(emailInput, emailError, 'Please enter a valid email address');
             isValid = false;
         }
-        
+
         if (!messageInput.value.trim()) {
             showError(messageInput, messageError, 'Message is required');
             isValid = false;
         }
-        
+
         if (isValid) {
             // Show loading state
             submitButton.disabled = true;
             submitButton.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
-            
-            // Simulate form submission (replace with actual form submission)
-            setTimeout(function() {
+
+            // Send form data to Formspree via AJAX
+            fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm),
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    // Hide loading state
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+
+                    // Show success message
+                    successMessage.classList.remove('hidden');
+
+                    // Reset form
+                    contactForm.reset();
+
+                    // Hide success message after 5 seconds
+                    setTimeout(function() {
+                        successMessage.classList.add('hidden');
+                    }, 5000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            })
+            .catch(error => {
                 // Hide loading state
                 submitButton.disabled = false;
                 submitButton.textContent = 'Send Message';
-                
-                // Show success message
-                successMessage.classList.remove('hidden');
-                
-                // Reset form
-                contactForm.reset();
-                fileName.textContent = 'No file chosen';
-                
-                // Hide success message after 5 seconds
+
+                // Show error message
+                errorMessage.classList.remove('hidden');
+
+                // Hide error message after 5 seconds
                 setTimeout(function() {
-                    successMessage.classList.add('hidden');
+                    errorMessage.classList.add('hidden');
                 }, 5000);
-            }, 1500);
+            });
         }
     });
-    
+
+    // Show error message and style input
     function showError(input, errorElement, message) {
         input.classList.add('error');
         errorElement.textContent = message;
         errorElement.style.display = 'block';
     }
-    
+
+    // Reset all errors and messages
     function resetErrors() {
         // Reset input styles
         nameInput.classList.remove('error');
         emailInput.classList.remove('error');
         messageInput.classList.remove('error');
-        
+
         // Hide error messages
         nameError.style.display = 'none';
         emailError.style.display = 'none';
         messageError.style.display = 'none';
-        
+
         // Hide alert messages
         successMessage.classList.add('hidden');
         errorMessage.classList.add('hidden');
     }
-    
+
+    // Validate email format
     function isValidEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         return emailRegex.test(email);
