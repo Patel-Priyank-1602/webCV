@@ -229,6 +229,90 @@ document.addEventListener("DOMContentLoaded", () => {
       typeWriter(heroSubtitle, "Transforming ideas into innovative technology", 80)
     }, 2000)
   })
+
+  const scriptURL = 'https://script.google.com/macros/s/AKfycbzUnsw5S630BFc-EwbcTThplaasItFxYFJpfvUKgo8VXY_p-Jahl9K5UhAWD4ePt-Cn/exec'
+        
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('contactForm');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            const submitButton = document.getElementById('submitButton');
+
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                
+                // Basic form validation
+                const name = document.getElementById('name');
+                const email = document.getElementById('email');
+                const message = document.getElementById('message');
+                
+                let isValid = true;
+                
+                // Reset previous error messages
+                document.getElementById('nameError').textContent = '';
+                document.getElementById('emailError').textContent = '';
+                document.getElementById('messageError').textContent = '';
+                
+                // Name validation
+                if (name.value.trim() === '') {
+                    document.getElementById('nameError').textContent = 'Please enter your name';
+                    isValid = false;
+                }
+                
+                // Email validation
+                const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                if (email.value.trim() === '') {
+                    document.getElementById('emailError').textContent = 'Please enter your email';
+                    isValid = false;
+                } else if (!emailRegex.test(email.value)) {
+                    document.getElementById('emailError').textContent = 'Please enter a valid email address';
+                    isValid = false;
+                }
+                
+                // Message validation
+                if (message.value.trim() === '') {
+                    document.getElementById('messageError').textContent = 'Please enter a message';
+                    isValid = false;
+                }
+                
+                // If validation fails, stop submission
+                if (!isValid) return;
+                
+                // Disable submit button and show loading state
+                submitButton.disabled = true;
+                submitButton.textContent = 'Sending...';
+                
+                // Prepare form data
+                const formData = new FormData(form);
+                
+                // Send data to Google Sheets
+                fetch(scriptURL, {
+                    method: 'POST',
+                    body: formData,
+                    mode: 'no-cors' // Important for handling cross-origin requests
+                })
+                .then(() => {
+                    // Show success message
+                    successMessage.classList.remove('hidden');
+                    errorMessage.classList.add('hidden');
+                    
+                    // Reset form
+                    form.reset();
+                })
+                .catch((error) => {
+                    // Show error message
+                    errorMessage.classList.remove('hidden');
+                    successMessage.classList.add('hidden');
+                    console.error('Error!', error.message);
+                })
+                .finally(() => {
+                    // Re-enable submit button
+                    submitButton.disabled = false;
+                    submitButton.textContent = 'Send Message';
+                });
+            });
+        });
+
   document.addEventListener('DOMContentLoaded', function() {
     // Get form elements
     const contactForm = document.getElementById('contactForm');
