@@ -231,22 +231,22 @@
                     <!-- Contact Form -->
                     <div class="contact-form-container">
                         <h3 class="contact-subtitle">Send Me a Message</h3>
-                        <form id="contactForm" class="contact-form">
+                        <form id="contactForm" class="contact-form" action="https://formspree.io/f/xyzepolg" method="POST">
                             <div class="form-group">
                                 <label for="name">Your Name</label>
-                                <input type="text" id="name" class="form-control" placeholder="Enter your name">
+                                <input type="text" id="name" name="name" class="form-control" placeholder="Enter your name" required>
                                 <span class="error-message" id="nameError"></span>
                             </div>
                             
                             <div class="form-group">
                                 <label for="email">Your Email</label>
-                                <input type="email" id="email" class="form-control" placeholder="Enter your email">
+                                <input type="email" id="email" name="email" class="form-control" placeholder="Enter your email" required>
                                 <span class="error-message" id="emailError"></span>
                             </div>
                             
                             <div class="form-group">
                                 <label for="message">Your Message</label>
-                                <textarea id="message" class="form-control" rows="5" placeholder="How can I help you?"></textarea>
+                                <textarea id="message" name="message" class="form-control" rows="5" placeholder="How can I help you?" required></textarea>
                                 <span class="error-message" id="messageError"></span>
                             </div>
                             <button type="submit" id="submitButton" class="submit-button">Send Message</button>
