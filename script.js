@@ -224,7 +224,7 @@ document.addEventListener("DOMContentLoaded", () => {
     })
   
     // Start typing animations
-    typeWriter(heroTitle, "I'm Priyank Patel", 100)
+    typeWriter(heroTitle, "I'm Priyank D Patel", 100)
     setTimeout(() => {
       typeWriter(heroSubtitle, "Transforming ideas into innovative technology", 80)
     }, 2000)
